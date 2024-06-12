@@ -5,14 +5,12 @@ const threadSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
-  konten: { 
+  body: { 
     type: String, 
     required: true 
-  },
-  date: { 
-    type: Date, 
-    default: Date.now 
   }
+}, {
+  timestamps: true
 });
 
 const Thread = mongoose.model('Thread', threadSchema);

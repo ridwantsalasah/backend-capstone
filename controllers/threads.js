@@ -1,35 +1,23 @@
 const express = require("express");
-const app = express();
-const connectDB = require("../db/connect");
-
 
 const Thread = require('../models/thread');
-const handler = async (req, res) => {
-  const { method } = req;
-
-  switch (method) {   
-      case 'GET':
-          await connectDB();
-          res.json({ ok: true });
-      case 'POST':
-          return postThread(req, res);
-      // case yg lain
-      default:
-          return res.status(404).send('Not Found');
-  }
-};
 
 const postThread = async (req, res) => {
+  console.log("Request body:", req.body); // Log request body
+
   try {
-      const thread = new Thread({
-          nama: req.body.nama,
-          konten: req.body.konten
-      });
-      await thread.save();
-      console.log(thread);
-      res.status(201).send(thread);
+    const newThread = await Thread.create(req.body);
+    // console.log("New thread created:", newThread); // Log new thread creation
+    return res.status(201).json({
+      status: 'success',
+      data: newThread
+    });
   } catch (error) {
-    res.status(400).send({ message: 'Error creating thread', error: error.message });
+    console.error("Error creating thread:", error); // Log error
+    res.status(400).json({
+      status: 'fail',
+      message: error.errors
+    });
   }
 };
   
@@ -94,5 +82,4 @@ const deleteThreadById = async (req, res) => {
     getThreadById,
     updateThreadById,
     deleteThreadById,
-    handler
   };

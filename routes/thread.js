@@ -7,7 +7,7 @@ const {
   getThreadById, 
   updateThreadById, 
   deleteThreadById 
-} = require('../controllers/threads');
+} = require('../controllers/threads.js');
 
 // Rute untuk membuat thread baru
 router.route('/')

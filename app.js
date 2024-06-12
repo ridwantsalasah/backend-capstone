@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
@@ -8,12 +9,12 @@ const PORT = process.env.PORT || 5000;
 const routes = require("./routes/products");
 const threadRoutes = require('./routes/thread');
 
+app.use(express.json());
 // middleware or set router
 app.use("/article", routes);
 app.use('/threads', threadRoutes);
 // Middleware untuk parsing JSON
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 
 
 const start = async () => {
