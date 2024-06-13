@@ -32,3 +32,8 @@ https://backend-capstone-api-seven.vercel.app/
 | `GET`    | `/threads`                               | Retrieve all threads                     |
 | `POST`   | `/threads`                               | Create a new Post                        |
 
+POST Threads
+Headers:
+Content-Type: application/json
+Body:
+JSON: { "nama": string, "body": string}
