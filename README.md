@@ -15,6 +15,7 @@ The request method is the way we distinguish what kind of action our endpoint is
 Now that we’ve learned about the anatomy of our endpoints and the different request methods that we should use, it’s time for some examples:
 
 **Base Url** :
+https://backend-capstone-api-seven.vercel.app/
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
