@@ -2,13 +2,15 @@ const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
 const bodyParser = require('body-parser');
+const cors = require('cors');
+app.use(cors());
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
 const routes = require("./routes/products");
 const threadRoutes = require('./routes/thread');
-
+app.use(cors());
 app.use(express.json());
 // middleware or set router
 app.use('/api/article', routes);
