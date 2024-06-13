@@ -3,7 +3,7 @@ const express = require("express");
 const Thread = require('../models/thread');
 
 const postThread = async (req, res) => {
-  console.log("Request body:", req.body); // Log request body
+  // console.log("Request body:", req.body); // Log request body
 
   try {
     const newThread = await Thread.create(req.body);

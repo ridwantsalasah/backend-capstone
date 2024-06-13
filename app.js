@@ -15,7 +15,13 @@ app.use("/article", routes);
 app.use('/threads', threadRoutes);
 // Middleware untuk parsing JSON
 
-
+app.get('/', (req, res) => {
+    res.send({
+      greet: 'Halo semuanya',
+      message: 'visit link on bellow for documentation about EcoTour 👇',
+      documentation: 'https://github.com/ridwantsalasah/backend-capstone',
+    });
+  });
 
 const start = async () => {
     try {
