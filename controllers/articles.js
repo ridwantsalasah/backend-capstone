@@ -3,113 +3,110 @@ const app = express();
 
 const cangguModel = require("../models/article-canggu");
 const nusaduaModel = require("../models/article-nusadua");
-const kintamaniModel = require ("../models/article-kintamani");
-const ubudModel = require ("../models/article-ubud");
-const seminyakModel = require ("../models/article-seminyak");
-const kutaModel = require ("../models/article-kuta");
+const kintamaniModel = require("../models/article-kintamani");
+const ubudModel = require("../models/article-ubud");
+const seminyakModel = require("../models/article-seminyak");
+const kutaModel = require("../models/article-kuta");
 const detailModel = require('../models/details');
 
-const getAllCanggu = async(req, res) => {
-    try{
+// Handler untuk mendapatkan semua artikel di Canggu
+const getAllCanggu = async (req, res) => {
+  try {
     const canggu = await cangguModel.find({});
-    res.status(200).json({canggu});
-    if (!canggu) {
-        return res.status(404).send({ message: 'article not found' });
-      }
-      res.send(canggu);
-    } catch (error) {
-      res.status(500).send({ message: 'Error fetching article' });
+    if (!canggu || canggu.length === 0) {
+      return res.status(404).send({ message: 'Article not found' });
     }
+    res.status(200).json({ canggu });
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching article' });
+  }
 };
 
-const getAllNusaDua = async(req, res) => {
-    try{
+// Handler untuk mendapatkan semua artikel di Nusa Dua
+const getAllNusaDua = async (req, res) => {
+  try {
     const nusadua = await nusaduaModel.find({});
-    res.status(200).json({nusadua});
-    if (!nusadua) {
-        return res.status(404).send({ message: 'article not found' });
-      }
-      res.send(nusadua);
-    } catch (error) {
-      res.status(500).send({ message: 'Error fetching article' });
+    if (!nusadua || nusadua.length === 0) {
+      return res.status(404).send({ message: 'Article not found' });
     }
+    res.status(200).json({ nusadua });
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching article' });
+  }
 };
 
-const getAllKintamani = async(req, res) => {
-    try{
+// Handler untuk mendapatkan semua artikel di Kintamani
+const getAllKintamani = async (req, res) => {
+  try {
     const kintamani = await kintamaniModel.find({});
-    res.status(200).json({kintamani});
-    if (!kintamani) {
-        return res.status(404).send({ message: 'article not found' });
-      }
-      res.send(kintamani);
-    } catch (error) {
-      res.status(500).send({ message: 'Error fetching article' });
+    if (!kintamani || kintamani.length === 0) {
+      return res.status(404).send({ message: 'Article not found' });
     }
+    res.status(200).json({ kintamani });
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching article' });
+  }
 };
 
-const getAllUbud = async(req, res) => {
-    try{
+// Handler untuk mendapatkan semua artikel di Ubud
+const getAllUbud = async (req, res) => {
+  try {
     const ubud = await ubudModel.find({});
-    res.status(200).json({ubud});
-    
-    if (!ubud) {
-        return res.status(404).send({ message: 'article not found' });
-      }
-      res.send(ubud);
-    } catch (error) {
-      res.status(500).send({ message: 'Error fetching article' });
+    if (!ubud || ubud.length === 0) {
+      return res.status(404).send({ message: 'Article not found' });
     }
+    res.status(200).json({ ubud });
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching article' });
+  }
 };
 
-const getAllKuta = async(req, res) => {
-    try{
+// Handler untuk mendapatkan semua artikel di Kuta
+const getAllKuta = async (req, res) => {
+  try {
     const kuta = await kutaModel.find({});
-    res.status(200).json({kuta});
-    if (!kuta) {
-        return res.status(404).send({ message: 'article not found' });
-      }
-      res.send(kuta);
-    } catch (error) {
-      res.status(500).send({ message: 'Error fetching article' });
+    if (!kuta || kuta.length === 0) {
+      return res.status(404).send({ message: 'Article not found' });
     }
+    res.status(200).json({ kuta });
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching article' });
+  }
 };
 
-const getAllSeminyak = async(req, res) => {
-    try{
+// Handler untuk mendapatkan semua artikel di Seminyak
+const getAllSeminyak = async (req, res) => {
+  try {
     const seminyak = await seminyakModel.find({});
-    res.status(200).json({seminyak});
-
-    if (!seminyak) {
-        return res.status(404).send({ message: 'article not found' });
-      }
-      res.send(seminyak);
-    } catch (error) {
-      res.status(500).send({ message: 'Error fetching article' });
+    if (!seminyak || seminyak.length === 0) {
+      return res.status(404).send({ message: 'Article not found' });
     }
+    res.status(200).json({ seminyak });
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching article' });
+  }
 };
 
-// handler untuk mendapatkan detail berdasarkan ID
-const getDetailbyId = async(req, res) => {
+// Handler untuk mendapatkan detail berdasarkan ID
+const getDetailbyId = async (req, res) => {
   try {
     const detailId = req.params.id;
     const detail = await detailModel.findById(detailId);
-
     if (!detail) {
-      return res.status(404).send({ message: 'detail not found' });
+      return res.status(404).send({ message: 'Detail not found' });
     }
-
-    res.send(detail);
+    res.status(200).json({ detail });
   } catch (error) {
     res.status(500).send({ message: 'Error fetching detail' });
   }
 };
 
 module.exports = {
-    getAllCanggu, 
-    getAllNusaDua, 
-    getAllKintamani,
-    getAllKuta,
-    getAllSeminyak,
-    getAllUbud, 
-    getDetailbyId}
+  getAllCanggu,
+  getAllNusaDua,
+  getAllKintamani,
+  getAllKuta,
+  getAllSeminyak,
+  getAllUbud,
+  getDetailbyId
+};

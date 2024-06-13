@@ -15,8 +15,8 @@ const threadRoutes = require('./routes/thread');
 app.use(cors());
 app.use(express.json());
 // middleware or set router
-app.use('/api/article', routes);
-app.use('/api/threads', threadRoutes);
+app.use('/article', routes);
+app.use('/threads', threadRoutes);
 // Middleware untuk parsing JSON
 
 app.get('/', (req, res) => {
